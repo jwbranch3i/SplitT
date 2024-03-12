@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import transactionObjects.Transaction;
+
 public class DataGet
 {
 	/* table - transactions */
@@ -66,23 +68,7 @@ public class DataGet
 		
 		
 		System.out.println(sb.toString());
-		try
-		{
-			if (DataSource.getConn().isValid(4))
-			{
-				System.out.println("***Database ready");
-				System.out.println("***" + DataSource.getConn().getSchema());
-				System.out.println("***" + DataSource.getConn().getCatalog());
-			}
-		}
-		catch (SQLException e)
-		{
-			e.printStackTrace();
-		}
-		
-		
 		ArrayList<Transaction> transList = new ArrayList<Transaction>();
-
 
 		try (
 			Statement statement = DataSource.getConn().createStatement();

@@ -1,4 +1,4 @@
-package dataModel;
+package transactionObjects;
 
 abstract class TransactionParent
 {

@@ -1,4 +1,4 @@
-package dataModel;
+package transactionObjects;
 
 public class Transaction extends TransactionParent
 {

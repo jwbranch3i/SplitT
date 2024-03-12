@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import dataModel.DataGet;
 import dataModel.DataSource;
-import dataModel.Transaction;
+import transactionObjects.Transaction;
 
 public class SplitT
 {
