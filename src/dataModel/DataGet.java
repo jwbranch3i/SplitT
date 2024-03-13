@@ -38,7 +38,7 @@ public class DataGet
 	public static final int ORDER_BY_DESC = 3;
 
 	/**********************************************************************/
-	public ArrayList<Transaction> getTransactions(int sortOrder)
+	public static ArrayList<Transaction> getTransactions(int sortOrder)
 	{
 		StringBuilder sb = new StringBuilder("SELECT ");
 		sb.append(COL_TRANSACTIONS_ID + ", ");
@@ -65,14 +65,12 @@ public class DataGet
 			}
 		}
 		
-		
-		
 		System.out.println(sb.toString());
-		ArrayList<Transaction> transList = new ArrayList<Transaction>();
+		ArrayList<Transaction> transactionList = new ArrayList<Transaction>();
 
 		try (
 			Statement statement = DataSource.getConn().createStatement();
-			ResultSet results = statement.executeQuery("select * from Transactions")
+			ResultSet results = statement.executeQuery(sb.toString())
 		)
 		{
 			while (results.next())
@@ -87,10 +85,10 @@ public class DataGet
 				transaction.setMedical(results.getDouble(INDEX_TRANSACTIONS_MEDICAL));
 				transaction.setMisc(results.getDouble(INDEX_TRANSACTIONS_MISC));
 
-				transList.add(transaction);
+				transactionList.add(transaction);
 			}
 
-			return transList;
+			return transactionList;
 
 		}
 		catch (SQLException e)
