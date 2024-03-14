@@ -1,5 +1,9 @@
 package application;
 
+import dataModel.DataGet;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -51,4 +55,34 @@ public class MainController
 		@FXML
 		private Label totalAcct;
 
+		/******************************************/
+		public void listTransactions()
+		{
+			@SuppressWarnings("unchecked")
+			Task<ObservableList<Transaction>> task = new GetAllTransactions();
+			table.itemsProperty().bind(task.valueProperty());
+
+			new Thread(task).start();
+		}
 }
+
+/******************************************/
+@SuppressWarnings("rawtypes")
+class GetAllTransactions extends Task
+{
+	public ObservableList<Transaction> call()
+	{
+	//	return FXCollections.observableArrayList(DataSource.getInstance().queryTransactions(AcctData.ORDER_BY_ASC));
+		return FXCollections.observableArrayList(DataGet.getTransactions(DataGet.ORDER_BY_ASC));
+
+	}
+}
+
+
+
+
+
+
+
+
+
