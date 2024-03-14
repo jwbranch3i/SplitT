@@ -82,6 +82,7 @@ public class MainController
 		/******************************************/
 		public void getTransactions()
 		{
+			System.out.println("*** before task");
 			@SuppressWarnings("unchecked")
 			Task<ObservableList<Transaction>> task = new GetAllTransactions();
 			table.itemsProperty().bind(task.valueProperty());
@@ -96,15 +97,7 @@ class GetAllTransactions extends Task
 {
 	public ObservableList<Transaction> call()
 	{
-	//	return FXCollections.observableArrayList(DataSource.getInstance().queryTransactions(AcctData.ORDER_BY_ASC));
-		ObservableList<Transaction> list = FXCollections.observableArrayList(DataGet.getTransactions(DataGet.ORDER_BY_ASC));
-	//	return FXCollections.observableArrayList(DataGet.getTransactions(DataGet.ORDER_BY_ASC));
-		for (int i=0; i < list.size(); i++)
-		{
-			System.out.println(list.get(i));
-		}
-		return list;	
-
+		return FXCollections.observableArrayList(DataGet.getTransactions(DataGet.ORDER_BY_ASC));
 	}
 }
 

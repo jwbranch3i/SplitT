@@ -1,8 +1,5 @@
 package application;
 
-import java.util.ArrayList;
-
-import dataModel.DataGet;
 import dataModel.DataSource;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -10,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import transactionObjects.Transaction;
 
 public class SplitT extends Application
 {
@@ -22,7 +18,8 @@ public class SplitT extends Application
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
 			Parent root = loader.load();
 			MainController controller = loader.getController();
-			ArrayList<Transaction> list = DataGet.getTransactions(DataGet.ORDER_BY_ASC);
+			controller.getTransactions();
+//			ArrayList<Transaction> list = DataGet.getTransactions(DataGet.ORDER_BY_ASC);
 
 //			for (int i=0; i < list.size(); i++)
 //			{

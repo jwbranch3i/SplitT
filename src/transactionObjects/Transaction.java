@@ -1,82 +1,145 @@
 package transactionObjects;
 
+import javafx.beans.property.SimpleDoubleProperty;
+
 public class Transaction extends TransactionParent
 {
-	private double gas;
-	private double service;
-	private double john;
-	private double medical;
-	private double misc;
+	private SimpleDoubleProperty gas = new SimpleDoubleProperty(0.0);
+	private SimpleDoubleProperty service = new SimpleDoubleProperty(0.0);
+	private SimpleDoubleProperty john = new SimpleDoubleProperty(0.0);
+	private SimpleDoubleProperty medical = new SimpleDoubleProperty(0.0);
+	private SimpleDoubleProperty misc = new SimpleDoubleProperty(0.0);
+	private SimpleDoubleProperty total = new SimpleDoubleProperty(0.0);
 
 	/*********************************************************/
 	public Transaction()
 	{
-		gas = 0.0;
-		service = 0.0;
-		john = 0.0;
-		medical = 0.0;
-		misc = 0.0;
 	}
 	
-	void updateTotal()
+	// ----------------------------------------
+	public double getDoubleGas()
 	{
-		setTotal(gas + service + john + medical + misc);
+		return gas.get();
 	}
 
-	public double getGas()
+	public String getGas()
 	{
-		return gas;
+		if (gas.get() == 0.)
+		{
+			return "";
+		}
+		else
+		{
+			return String.format("%.2f", gas.get());
+		}
 	}
 
 	public void setGas(double gas)
 	{
-		this.gas = gas;
-		updateTotal();
+		this.gas.set(gas);
+		addTotal();
 	}
 
-	public double getService()
+	// ----------------------------------------
+	public double getDoubleService()
 	{
-		return service;
+		return service.get();
+	}
+
+	public String getService()
+	{
+		if (service.get() == 0.)
+		{
+			return "";
+		}
+		else
+		{
+			return String.format("%.2f", service.get());
+		}
 	}
 
 	public void setService(double service)
 	{
-		this.service = service;
-		updateTotal();
+		this.service.set(service);
+		addTotal();
 	}
 
-	public double getJohn()
+	// ----------------------------------------
+	public double getDoubleJohn()
 	{
-		return john;
+		return john.get();
+	}
+
+	public String getJohn()
+	{
+		if (john.get() == 0.)
+		{
+			return "";
+		}
+		else
+		{
+			return String.format("%.2f", john.get());
+		}
 	}
 
 	public void setJohn(double john)
 	{
-		this.john = john;
-		updateTotal();
+		this.john.set(john);
+		addTotal();
 	}
 
-	public double getMedical()
+
+	// ----------------------------------------
+	public double getDoubleMed()
 	{
-		return medical;
+		return medical.get();
 	}
 
-	public void setMedical(double medical)
+	public String getMedical()
 	{
-		this.medical = medical;
-		updateTotal();
+		if (medical.get() == 0.)
+		{
+			return "";
+		}
+		else
+		{
+			return String.format("%.2f", medical.get());
+		}
 	}
 
-	public double getMisc()
+	public void setMed(double med)
 	{
-		return misc;
+		this.medical.set(med);
+		addTotal();
+	}
+
+	// ----------------------------------------
+	public double getDoubleMisc()
+	{
+		return misc.get();
+	}
+
+	public String getMisc()
+	{
+		if (misc.get() == 0.)
+		{
+			return "";
+		}
+		else
+		{
+			return String.format("%.2f", misc.get());
+		}
 	}
 
 	public void setMisc(double misc)
 	{
-		this.misc = misc;
-		updateTotal();
+		this.misc.set(misc);
+		addTotal();
 	}
+
+	// ----------------------------------------
+	Todo
+	function add total
 
 	@Override
 	public String toString()
