@@ -24,11 +24,11 @@ public class SplitT extends Application
 			MainController controller = loader.getController();
 			ArrayList<Transaction> list = DataGet.getTransactions(DataGet.ORDER_BY_ASC);
 
-			for (int i=0; i < list.size(); i++)
-			{
-				System.out.println(list.get(i));
-			}
-				
+//			for (int i=0; i < list.size(); i++)
+//			{
+//				System.out.println(list.get(i));
+//			}
+//				
 			
 			Scene scene = new Scene(root, 900, 800);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

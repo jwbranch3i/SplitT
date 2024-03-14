@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import transactionObjects.Transaction;
 
 public class MainController
@@ -55,8 +56,31 @@ public class MainController
 		@FXML
 		private Label totalAcct;
 
+		public void initialize()
+		{
+			colDate.setCellValueFactory(new PropertyValueFactory<Transaction, String>("transactionDate"));
+
+			colDiscription.setCellValueFactory(new PropertyValueFactory<Transaction, String>("discription"));
+
+			colGas.setCellValueFactory(new PropertyValueFactory<Transaction, String>("gas"));
+			colGas.setStyle("-fx-alignment: CENTER-RIGHT");
+
+			colService.setCellValueFactory(new PropertyValueFactory<Transaction, String>("service"));
+			colService.setStyle("-fx-alignment: CENTER-RIGHT");
+
+			colJohn.setCellValueFactory(new PropertyValueFactory<Transaction, String>("john"));
+			colJohn.setStyle("-fx-alignment: CENTER-RIGHT");
+
+			colMedical.setCellValueFactory(new PropertyValueFactory<Transaction, String>("med"));
+			colMedical.setStyle("-fx-alignment: CENTER-RIGHT");
+
+			colMisc.setCellValueFactory(new PropertyValueFactory<Transaction, String>("misc"));
+			colMisc.setStyle("-fx-alignment: CENTER-RIGHT");
+
+		}
+
 		/******************************************/
-		public void listTransactions()
+		public void getTransactions()
 		{
 			@SuppressWarnings("unchecked")
 			Task<ObservableList<Transaction>> task = new GetAllTransactions();
@@ -73,7 +97,13 @@ class GetAllTransactions extends Task
 	public ObservableList<Transaction> call()
 	{
 	//	return FXCollections.observableArrayList(DataSource.getInstance().queryTransactions(AcctData.ORDER_BY_ASC));
-		return FXCollections.observableArrayList(DataGet.getTransactions(DataGet.ORDER_BY_ASC));
+		ObservableList<Transaction> list = FXCollections.observableArrayList(DataGet.getTransactions(DataGet.ORDER_BY_ASC));
+	//	return FXCollections.observableArrayList(DataGet.getTransactions(DataGet.ORDER_BY_ASC));
+		for (int i=0; i < list.size(); i++)
+		{
+			System.out.println(list.get(i));
+		}
+		return list;	
 
 	}
 }
