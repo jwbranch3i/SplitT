@@ -19,14 +19,15 @@ public class SplitT extends Application
 			Parent root = loader.load();
 			MainController controller = loader.getController();
 			controller.getTransactions();
-//			ArrayList<Transaction> list = DataGet.getTransactions(DataGet.ORDER_BY_ASC);
 
-//			for (int i=0; i < list.size(); i++)
-//			{
-//				System.out.println(list.get(i));
-//			}
-//				
-			
+			// ArrayList<Transaction> list =
+			// DataGet.getTransactions(DataGet.ORDER_BY_ASC);
+			//
+			// for (int i = 0; i < list.size(); i++)
+			// {
+			// System.out.println(list.get(i));
+			// }
+			//
 			Scene scene = new Scene(root, 900, 800);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
@@ -38,20 +39,23 @@ public class SplitT extends Application
 		}
 	}
 
-    @Override
-    public void init() throws Exception {
-        super.init();
-        if(!DataSource.getInstance().open()) {
-            System.out.println("FATAL ERROR: Couldn't connect to database");
-            Platform.exit();
-        }
-    }
+	@Override
+	public void init() throws Exception
+	{
+		super.init();
+		if (!DataSource.getInstance().open())
+		{
+			System.out.println("FATAL ERROR: Couldn't connect to database");
+			Platform.exit();
+		}
+	}
 
-    @Override
-    public void stop() throws Exception {
-        super.stop();
-        DataSource.getInstance().close();
-    }
+	@Override
+	public void stop() throws Exception
+	{
+		super.stop();
+		DataSource.getInstance().close();
+	}
 
 	public static void main(String[] args)
 	{

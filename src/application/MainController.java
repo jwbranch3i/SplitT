@@ -58,7 +58,8 @@ public class MainController
 
 		public void initialize()
 		{
-			colDate.setCellValueFactory(new PropertyValueFactory<Transaction, String>("transactionDate"));
+			System.out.printlin("*** test get: " + Transaction.getTransDate());
+			colDate.setCellValueFactory(new PropertyValueFactory<Transaction, String>("transDate"));
 
 			colDiscription.setCellValueFactory(new PropertyValueFactory<Transaction, String>("discription"));
 

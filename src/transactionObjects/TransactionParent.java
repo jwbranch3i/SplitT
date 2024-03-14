@@ -1,22 +1,21 @@
 package transactionObjects;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 abstract class TransactionParent
 {
 	private int _id;
-	private String transDate;
-	private String discription;
-	private double total;
+	private SimpleStringProperty transDate = new SimpleStringProperty("");
+	private SimpleStringProperty discription = new SimpleStringProperty("");
+	private SimpleDoubleProperty total = new SimpleDoubleProperty(0.0);
 	
 	public TransactionParent()
 	{
-		_id = 0;
-		transDate = "";
-		discription = "";
-		total = 0.0;
 	}
 	
 	/*******************************************************************/
-	abstract void updateTotal();
+	abstract protected void updateTotal();
 	
 	
 	/******************************************************************/
@@ -30,35 +29,49 @@ abstract class TransactionParent
 		this._id = _id;
 	}
 
+	// ----------------------------------------
 	public String getTransDate()
 	{
-		return transDate;
+		return transDate.get();
 	}
 
-	public void setTransDate(String transDate)
+	public void setTransDate(String date)
 	{
-		this.transDate = transDate;
+		this.transDate.set(date);
+	}
+
+	// ----------------------------------------
+	public void setDiscription(String disc)
+	{
+		this.discription.set(disc);
 	}
 
 	public String getDiscription()
 	{
-		return discription;
+		return discription.get();
 	}
 
-	public void setDiscription(String discription)
+	// ----------------------------------------
+	public double getDoubleTotal()
 	{
-		this.discription = discription;
+		return total.get();
 	}
 
-	public double getTotal()
+	public String getTotal()
 	{
-		return total;
+		if (total.get() == 0.)
+		{
+			return "";
+		}
+		else
+		{
+			return String.format("%.2f", total.get());
+		}
 	}
 
-	public void setTotal(double total)
+	protected void setTotal(double total)
 	{
-		this.total = total;
+		this.total.set(total);
 	}
-	
 					
 }

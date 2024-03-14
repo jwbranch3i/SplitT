@@ -1,9 +1,13 @@
 package transactionObjects;
 
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
 
-public class Transaction extends TransactionParent
+public class Transaction
 {
+	private int _id;
+	private SimpleStringProperty transDate = new SimpleStringProperty("");
+	private SimpleStringProperty discription = new SimpleStringProperty("");
 	private SimpleDoubleProperty gas = new SimpleDoubleProperty(0.0);
 	private SimpleDoubleProperty service = new SimpleDoubleProperty(0.0);
 	private SimpleDoubleProperty john = new SimpleDoubleProperty(0.0);
@@ -16,6 +20,39 @@ public class Transaction extends TransactionParent
 	{
 	}
 	
+	// ----------------------------------------
+	public int get_id()
+	{
+		return _id;
+	}
+
+	public void set_id(int _id)
+	{
+		this._id = _id;
+	}
+
+	// ----------------------------------------
+	public String getTransDate()
+	{
+		return transDate.get();
+	}
+
+	public void setTransDate(String date)
+	{
+		this.transDate.set(date);
+	}
+	
+	// ----------------------------------------
+	public void setDiscription(String disc)
+	{
+		this.discription.set(disc);
+	}
+
+	public String getDiscription()
+	{
+		return discription.get();
+	}
+
 	// ----------------------------------------
 	public double getDoubleGas()
 	{
@@ -37,7 +74,7 @@ public class Transaction extends TransactionParent
 	public void setGas(double gas)
 	{
 		this.gas.set(gas);
-		addTotal();
+		updateTotal();
 	}
 
 	// ----------------------------------------
@@ -61,7 +98,7 @@ public class Transaction extends TransactionParent
 	public void setService(double service)
 	{
 		this.service.set(service);
-		addTotal();
+		updateTotal();
 	}
 
 	// ----------------------------------------
@@ -85,12 +122,12 @@ public class Transaction extends TransactionParent
 	public void setJohn(double john)
 	{
 		this.john.set(john);
-		addTotal();
+		updateTotal();
 	}
 
 
 	// ----------------------------------------
-	public double getDoubleMed()
+	public double getDoubleMedical()
 	{
 		return medical.get();
 	}
@@ -107,10 +144,10 @@ public class Transaction extends TransactionParent
 		}
 	}
 
-	public void setMed(double med)
+	public void setMedical(double med)
 	{
 		this.medical.set(med);
-		addTotal();
+		updateTotal();
 	}
 
 	// ----------------------------------------
@@ -130,23 +167,54 @@ public class Transaction extends TransactionParent
 			return String.format("%.2f", misc.get());
 		}
 	}
-
+	
 	public void setMisc(double misc)
 	{
 		this.misc.set(misc);
-		addTotal();
+		updateTotal();
 	}
 
 	// ----------------------------------------
-	Todo
-	function add total
+	public double getDoubleTotal()
+	{
+		return total.get();
+	}
+
+	public String getTotal()
+	{
+		if (total.get() == 0.)
+		{
+			return "";
+		}
+		else
+		{
+			return String.format("%.2f", total.get());
+		}
+	}
+	
+	protected void setTotal(double total)
+	{
+		this.total.set(total);
+	}
+
+	
+
+	// ----------------------------------------
+	protected void updateTotal()
+	{
+		setTotal(getDoubleGas() + getDoubleService() + getDoubleJohn() +
+				getDoubleMedical() + getDoubleMisc());		
+	}
 
 	@Override
 	public String toString()
 	{
-		return "Transaction [gas="
-						+ gas + ", service=" + service + ", john=" + john + ", medical="
-						+ medical + ", misc=" + misc + "]";
+		return "Transaction [gas= " + getDoubleGas()
+		                    + " service= " + getDoubleService()
+		                    + " john= " + getDoubleJohn()
+		                    + " medical= " + getDoubleMedical()
+		                    + " misc= " + getDoubleMisc()
+		                    + " total= " + getDoubleTotal() +"]";
 	}
 
 	
