@@ -1,6 +1,7 @@
 package application;
 
-import dataModel.DataGet;
+import dataModel.DB;
+import dataModel.ReadData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -185,7 +186,7 @@ class GetAllTransactions extends Task
 {
 	public ObservableList<Transaction> call()
 	{
-		return FXCollections.observableArrayList(DataGet.getTransactions(DataGet.ORDER_BY_ASC));
+		return FXCollections.observableArrayList(ReadData.getTransactions(DB.ORDER_BY_ASC));
 	}
 }
 
