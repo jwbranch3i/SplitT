@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 import transactionObjects.Transaction;
 
@@ -38,7 +39,7 @@ public class DataGet
 	public static final int ORDER_BY_DESC = 3;
 
 	/**********************************************************************/
-	public static ArrayList<Transaction> getTransactions(int sortOrder)
+	public static List<Transaction> getTransactions(int sortOrder)
 	{
 		StringBuilder sb = new StringBuilder("SELECT ");
 		sb.append(COL_TRANSACTIONS_ID + ", ");
@@ -66,13 +67,13 @@ public class DataGet
 		}
 		
 		System.out.println(sb.toString());
-		ArrayList<Transaction> transactionList = new ArrayList<Transaction>();
 
 		try (
 			Statement statement = DataSource.getConn().createStatement();
 			ResultSet results = statement.executeQuery(sb.toString())
 		)
 		{
+			List<Transaction> list = new ArrayList<Transaction>();
 			while (results.next())
 			{
 				Transaction transaction = new Transaction();
@@ -85,10 +86,10 @@ public class DataGet
 				transaction.setMedical(results.getDouble(INDEX_TRANSACTIONS_MEDICAL));
 				transaction.setMisc(results.getDouble(INDEX_TRANSACTIONS_MISC));
 
-				transactionList.add(transaction);
+				list.add(transaction);
 			}
 
-			return transactionList;
+			return list;
 
 		}
 		catch (SQLException e)

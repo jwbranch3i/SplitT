@@ -18,7 +18,7 @@ public class SplitT extends Application
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
 			Parent root = loader.load();
 			MainController controller = loader.getController();
-			controller.getTransactions();
+		 controller.getTransactions();
 
 			// ArrayList<Transaction> list =
 			// DataGet.getTransactions(DataGet.ORDER_BY_ASC);
@@ -27,7 +27,7 @@ public class SplitT extends Application
 			// {
 			// System.out.println(list.get(i));
 			// }
-			//
+
 			Scene scene = new Scene(root, 900, 800);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);

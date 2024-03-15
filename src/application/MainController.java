@@ -58,7 +58,6 @@ public class MainController
 
 		public void initialize()
 		{
-			System.out.printlin("*** test get: " + Transaction.getTransDate());
 			colDate.setCellValueFactory(new PropertyValueFactory<Transaction, String>("transDate"));
 
 			colDiscription.setCellValueFactory(new PropertyValueFactory<Transaction, String>("discription"));
@@ -72,7 +71,7 @@ public class MainController
 			colJohn.setCellValueFactory(new PropertyValueFactory<Transaction, String>("john"));
 			colJohn.setStyle("-fx-alignment: CENTER-RIGHT");
 
-			colMedical.setCellValueFactory(new PropertyValueFactory<Transaction, String>("med"));
+			colMedical.setCellValueFactory(new PropertyValueFactory<Transaction, String>("medical"));
 			colMedical.setStyle("-fx-alignment: CENTER-RIGHT");
 
 			colMisc.setCellValueFactory(new PropertyValueFactory<Transaction, String>("misc"));
