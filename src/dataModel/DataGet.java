@@ -78,7 +78,7 @@ public class DataGet
 			{
 				Transaction transaction = new Transaction();
 				transaction.set_id(results.getInt(INDEX_TRANSACTIONS_ID));
-				transaction.setTransDate(results.getString(INDEX_TRANSACTIONS_DATE));
+				transaction.setDate(results.getString(INDEX_TRANSACTIONS_DATE));
 				transaction.setDiscription(results.getString(INDEX_TRANSACTIONS_DISCRIPTION));
 				transaction.setGas(results.getDouble(INDEX_TRANSACTIONS_GAS));
 				transaction.setService(results.getDouble(INDEX_TRANSACTIONS_SERVICE));

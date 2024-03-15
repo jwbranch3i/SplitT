@@ -55,9 +55,9 @@
                   <Label text="Misc" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.halignment="CENTER" />
                </children>
             </GridPane>
-            <TableView fx:id="table" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="722.0">
+            <TableView fx:id="table" editable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="722.0">
               <columns>
-                <TableColumn fx:id="colDate" maxWidth="400.0" prefWidth="75.0" sortable="false" text="Date" />
+                <TableColumn fx:id="colDate" maxWidth="400.0" prefWidth="75.0" text="Date" />
 
                 <TableColumn fx:id="colDiscription" maxWidth="400.0" prefWidth="75.0" text="Discription" />
                   <TableColumn fx:id="colGas" maxWidth="400.0" prefWidth="75.0" text="Gas" />

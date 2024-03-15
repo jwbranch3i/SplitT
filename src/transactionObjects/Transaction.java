@@ -37,7 +37,7 @@ public class Transaction
 		return transDate.get();
 	}
 
-	public void setTransDate(String date)
+	public void setDate(String date)
 	{
 		this.transDate.set(date);
 	}
