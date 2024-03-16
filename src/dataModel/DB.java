@@ -4,7 +4,7 @@ public class DB
 {
 	/* table - transactions */
 	public static final String TABLE_TRANSACTIONS = "Transactions";
-	public static final String COL_TRANSACTIONS_ID = "_ID";
+	public static final String COL_TRANSACTIONS_ID = "_id";
 	public static final String COL_TRANSACTIONS_DATE = "date";
 	public static final String COL_TRANSACTIONS_DISCRIPTION = "discription";
 	public static final String COL_TRANSACTIONS_GAS = "gas";
@@ -29,6 +29,10 @@ public class DB
 	public static final int ORDER_BY_NONE = 1;
 	public static final int ORDER_BY_ASC = 2;
 	public static final int ORDER_BY_DESC = 3;
+	
+	public static final String SQL_STMT_UPDATE_FIELD_DATE =
+					"UPDATE " + TABLE_TRANSACTIONS + " SET DATE = ? WHERE "
+					+ COL_TRANSACTIONS_ID + " = ?";
 	
 	public static String getTransactionsStmt(int sortOrder)
 	{
@@ -58,6 +62,6 @@ public class DB
 		}
 		
 		return sb.toString();
-		
 	}
+	
 }

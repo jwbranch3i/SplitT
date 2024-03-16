@@ -2,6 +2,7 @@ package application;
 
 import dataModel.DB;
 import dataModel.ReadData;
+import dataModel.WriteData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -103,7 +104,12 @@ public class MainController
 			TableColumn.CellEditEvent<Transaction, String> cellEdit;
 			cellEdit = (TableColumn.CellEditEvent<Transaction, String>) e;
 			Transaction transaction = cellEdit.getRowValue();
+			Boolean success = WriteData.updateRecord(cellEdit.getNewValue(), transaction.get_id());
+			if (success)
+			{
 			transaction.setDate(cellEdit.getNewValue());
+			table.refresh();
+			}
 		}
 
 		/************************************************/
@@ -165,7 +171,6 @@ public class MainController
 			Transaction transaction = cellEdit.getRowValue();
 			transaction.setMisc(Double.valueOf(cellEdit.getNewValue()));
 		}
-		
 		
 		
 		
