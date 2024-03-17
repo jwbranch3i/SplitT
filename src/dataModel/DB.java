@@ -29,23 +29,23 @@ public class DB
 	public static final int ORDER_BY_NONE = 1;
 	public static final int ORDER_BY_ASC = 2;
 	public static final int ORDER_BY_DESC = 3;
-	
-	public static final String SQL_STMT_UPDATE_FIELD_DATE =
-					"UPDATE " + TABLE_TRANSACTIONS + " SET DATE = ? WHERE "
-					+ COL_TRANSACTIONS_ID + " = ?";
-	
+
+
+	public static final String sql_stmt_UPDATEFIELD_pt1 = "UPDATE Transactions set ";
+	public static final String sql_stmt_UPDATEFIELD_pt2= " = ? WHERE _id = ?";
+
 	public static String getTransactionsStmt(int sortOrder)
 	{
 		StringBuilder sb = new StringBuilder("SELECT ");
-		sb.append(DB.COL_TRANSACTIONS_ID + ", ");
-		sb.append(DB.COL_TRANSACTIONS_DATE + ", ");
-		sb.append(DB.COL_TRANSACTIONS_DISCRIPTION + ", ");
-		sb.append(DB.COL_TRANSACTIONS_GAS + ", ");
-		sb.append(DB.COL_TRANSACTIONS_SERVICE + ", ");
-		sb.append(DB.COL_TRANSACTIONS_JOHN + ", ");
-		sb.append(DB.COL_TRANSACTIONS_MEDICAL + ", ");
-		sb.append(DB.COL_TRANSACTIONS_MISC + " ");
-		sb.append("FROM " + DB.TABLE_TRANSACTIONS);
+		sb.append(COL_TRANSACTIONS_ID + ", ");
+		sb.append(COL_TRANSACTIONS_DATE + ", ");
+		sb.append(COL_TRANSACTIONS_DISCRIPTION + ", ");
+		sb.append(COL_TRANSACTIONS_GAS + ", ");
+		sb.append(COL_TRANSACTIONS_SERVICE + ", ");
+		sb.append(COL_TRANSACTIONS_JOHN + ", ");
+		sb.append(COL_TRANSACTIONS_MEDICAL + ", ");
+		sb.append(COL_TRANSACTIONS_MISC + " ");
+		sb.append("FROM " + TABLE_TRANSACTIONS);
 
 		if (sortOrder != DB.ORDER_BY_NONE)
 		{
@@ -60,8 +60,8 @@ public class DB
 				sb.append(" ASC");
 			}
 		}
-		
+
 		return sb.toString();
 	}
-	
+
 }

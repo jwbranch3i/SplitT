@@ -38,6 +38,7 @@ public class DataSource
 		try
 		{
 			conn = DriverManager.getConnection(CONNECTION_STRING);
+			
 			return true;
 		}
 		catch (SQLException e)

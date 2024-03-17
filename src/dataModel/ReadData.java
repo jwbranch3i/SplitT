@@ -26,7 +26,7 @@ public class ReadData
 			{
 				Transaction transaction = new Transaction();
 				transaction.set_id(results.getInt(DB.INDEX_TRANSACTIONS_ID));
-				transaction.setDate(results.getString(DB.INDEX_TRANSACTIONS_DATE));
+				transaction.setTransDate(results.getString(DB.INDEX_TRANSACTIONS_DATE));
 				transaction.setDiscription(results.getString(DB.INDEX_TRANSACTIONS_DISCRIPTION));
 				transaction.setGas(results.getDouble(DB.INDEX_TRANSACTIONS_GAS));
 				transaction.setService(results.getDouble(DB.INDEX_TRANSACTIONS_SERVICE));

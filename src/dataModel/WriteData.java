@@ -1,59 +1,41 @@
 package dataModel;
 
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
-import javafx.concurrent.Task;
+import transactionObjects.Transaction;
 
 public class WriteData
 {
 
-	public WriteData()
-	{
-	}
 	
 	/*******************************************************************/
-	public static Boolean updateRecord(String val, int id)
+	public static Boolean updateRecord(String cField, Transaction transaction)
 	{
-		Task<Boolean> task = new Task<Boolean>()
+		PreparedStatement ps_updateRecord;
+		try
 		{
-			@Override
-			protected Boolean call() throws Exception
+			String update_stmt = DB.sql_stmt_UPDATEFIELD_pt1 + cField + DB.sql_stmt_UPDATEFIELD_pt2;
+			ps_updateRecord = DataSource.getConn().prepareStatement(update_stmt);
+			switch (cField)
 			{
-				return updateRecordTask(val, id);
+				case DB.COL_TRANSACTIONS_DATE:
+					ps_updateRecord.setString(1, transaction.getTransDate());
+					ps_updateRecord.setInt(2, transaction.get_id());
+					
+					ps_updateRecord.executeUpdate();
+					break;
 			}
+			if (ps_updateRecord != null)
+			{
+				ps_updateRecord.close();
+			}
+			return true;
+		}
+		catch (Exception e)
+		{
+			System.out.println("Update transactions exception: " + e.getMessage());
 			return false;
-		});
-		
-		new Thread(task).start();
-	}
-
-	
-
-	public static boolean updateRecordTask(String val, int id)
-	{
-			PreparedStatement ps_updateFieldDate;
-			try
-			{
-				ps_updateFieldDate = DataSource.getConn().prepareStatement(DB.SQL_STMT_UPDATE_FIELD_DATE);
-				ps_updateFieldDate.setString(1, val);
-				ps_updateFieldDate.setInt(2, id);
-				int affectedRecords = ps_updateFieldDate.executeUpdate();
-				
-				if (ps_updateFieldDate != null)
-				{
-					ps_updateFieldDate.close();
-				}
-				
-				return affectedRecords == 1;
-			}
-			catch (SQLException e)
-			{
-				System.out.println("Update failed: " + e.getMessage());
-				e.printStackTrace();
-				return false;
-			}
-							
+		}
 	}
 }
 
