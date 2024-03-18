@@ -14,20 +14,21 @@ public class WriteData
 		PreparedStatement ps_updateRecord;
 		try
 		{
-			String update_stmt = DB.sql_stmt_UPDATEFIELD_pt1 + cField + DB.sql_stmt_UPDATEFIELD_pt2;
-			ps_updateRecord = DataSource.getConn().prepareStatement(update_stmt);
 			switch (cField)
 			{
 				case DB.COL_TRANSACTIONS_DATE:
+					String update_stmt = DB.sql_stmt_UPDATEFIELD_pt1 + cField + DB.sql_stmt_UPDATEFIELD_pt2;
+					ps_updateRecord = DataSource.getConn().prepareStatement(update_stmt);
 					ps_updateRecord.setString(1, transaction.getTransDate());
 					ps_updateRecord.setInt(2, transaction.get_id());
 					
 					ps_updateRecord.executeUpdate();
+					
+					if (ps_updateRecord != null)
+					{
+						ps_updateRecord.close();
+					}
 					break;
-			}
-			if (ps_updateRecord != null)
-			{
-				ps_updateRecord.close();
 			}
 			return true;
 		}
