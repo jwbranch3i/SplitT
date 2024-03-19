@@ -98,6 +98,7 @@ public class MainController
 		colMisc.setOnEditCommit(e -> colMisc_OnEditCommit(e));
 		colMisc.setStyle("-fx-alignment: CENTER-RIGHT");
 
+		colTotal.setCellValueFactory(new PropertyValueFactory<Transaction, String>("total"));
 	}
 
 	/************************************************/
@@ -109,7 +110,6 @@ public class MainController
 		Transaction transaction = cellEdit.getRowValue();
 
 		transaction.setTransDate(cellEdit.getNewValue());
-		System.out.println("*** in edit");
 		if (!WriteData.updateRecord(DB.COL_TRANSACTIONS_DATE, transaction))
 		{
 			transaction.setTransDate(cellEdit.getOldValue());
@@ -124,7 +124,13 @@ public class MainController
 		TableColumn.CellEditEvent<Transaction, String> cellEdit;
 		cellEdit = (TableColumn.CellEditEvent<Transaction, String>) e;
 		Transaction transaction = cellEdit.getRowValue();
+
 		transaction.setDiscription(cellEdit.getNewValue());
+		if (!WriteData.updateRecord(DB.COL_TRANSACTIONS_DISCRIPTION, transaction))
+		{
+			transaction.setDiscription(cellEdit.getOldValue());
+		}
+		table.refresh();
 	}
 
 	/************************************************/
@@ -134,7 +140,13 @@ public class MainController
 		TableColumn.CellEditEvent<Transaction, String> cellEdit;
 		cellEdit = (TableColumn.CellEditEvent<Transaction, String>) e;
 		Transaction transaction = cellEdit.getRowValue();
-		transaction.setGas(Double.valueOf(cellEdit.getNewValue()));
+
+		transaction.setGas(cellEdit.getNewValue());
+		if (!WriteData.updateRecord(DB.COL_TRANSACTIONS_GAS, transaction))
+		{
+			transaction.setGas(cellEdit.getOldValue());
+		}
+		table.refresh();
 	}
 
 	/************************************************/
@@ -144,7 +156,13 @@ public class MainController
 		TableColumn.CellEditEvent<Transaction, String> cellEdit;
 		cellEdit = (TableColumn.CellEditEvent<Transaction, String>) e;
 		Transaction transaction = cellEdit.getRowValue();
-		transaction.setService(Double.valueOf(cellEdit.getNewValue()));
+
+		transaction.setService(cellEdit.getNewValue());
+		if (!WriteData.updateRecord(DB.COL_TRANSACTIONS_SERVICE, transaction))
+		{
+			transaction.setService(cellEdit.getOldValue());
+		}
+		table.refresh();
 	}
 
 	/************************************************/
@@ -154,7 +172,13 @@ public class MainController
 		TableColumn.CellEditEvent<Transaction, String> cellEdit;
 		cellEdit = (TableColumn.CellEditEvent<Transaction, String>) e;
 		Transaction transaction = cellEdit.getRowValue();
-		transaction.setJohn(Double.valueOf(cellEdit.getNewValue()));
+
+		transaction.setJohn(cellEdit.getNewValue());
+		if (!WriteData.updateRecord(DB.COL_TRANSACTIONS_JOHN, transaction))
+		{
+			transaction.setJohn(cellEdit.getOldValue());
+		}
+		table.refresh();
 	}
 
 	/************************************************/
@@ -164,7 +188,13 @@ public class MainController
 		TableColumn.CellEditEvent<Transaction, String> cellEdit;
 		cellEdit = (TableColumn.CellEditEvent<Transaction, String>) e;
 		Transaction transaction = cellEdit.getRowValue();
-		transaction.setMedical(Double.valueOf(cellEdit.getNewValue()));
+
+		transaction.setMedical(cellEdit.getNewValue());
+		if (!WriteData.updateRecord(DB.COL_TRANSACTIONS_MEDICAL, transaction))
+		{
+			transaction.setMedical(cellEdit.getOldValue());
+		}
+		table.refresh();
 	}
 
 	/************************************************/
@@ -174,8 +204,15 @@ public class MainController
 		TableColumn.CellEditEvent<Transaction, String> cellEdit;
 		cellEdit = (TableColumn.CellEditEvent<Transaction, String>) e;
 		Transaction transaction = cellEdit.getRowValue();
-		transaction.setMisc(Double.valueOf(cellEdit.getNewValue()));
+
+		transaction.setMisc(cellEdit.getNewValue());
+		if (!WriteData.updateRecord(DB.COL_TRANSACTIONS_MISC, transaction))
+		{
+			transaction.setMisc(cellEdit.getOldValue());
+		}
+		table.refresh();
 	}
+
 
 	/******************************************/
 	public void getTransactions()
