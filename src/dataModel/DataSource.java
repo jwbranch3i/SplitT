@@ -9,8 +9,10 @@ public class DataSource
 	public static final String DB_NAME = "accounts.db";
 	public static final String CONNECTION_STRING = "jdbc:sqlite:D:\\Splits\\SplitT\\"
 					+ DB_NAME;
-	
+
 	private static Connection conn;
+
+	//private static final PreparedStatement ps_updateFieldDate;
 
 	private static DataSource instance = new DataSource();
 
@@ -24,7 +26,7 @@ public class DataSource
 	{
 		return instance;
 	}
-	
+
 	public static Connection getConn()
 	{
 		return conn;
@@ -36,6 +38,7 @@ public class DataSource
 		try
 		{
 			conn = DriverManager.getConnection(CONNECTION_STRING);
+			
 			return true;
 		}
 		catch (SQLException e)

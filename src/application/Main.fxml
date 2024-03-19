@@ -46,7 +46,7 @@
                   <TextField fx:id="totalGas" alignment="CENTER" editable="false" text="Gas" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                   <TextField fx:id="totalService" editable="false" text="Service" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                   <TextField fx:id="totalJohn" editable="false" text="John" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                  <TextField fx:id="totalMed" editable="false" text="Medical" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <TextField fx:id="totalMedical" editable="false" text="Medical" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                   <TextField fx:id="totalMisc" editable="false" text="Misc" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                   <Label text="Gas" textAlignment="CENTER" GridPane.halignment="CENTER" />
                   <Label text="Service" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
@@ -65,7 +65,7 @@
                   <TableColumn fx:id="colJohn" maxWidth="400.0" prefWidth="75.0" text="John" />
                   <TableColumn fx:id="colMedical" maxWidth="400.0" prefWidth="75.0" text="Medical" />
                   <TableColumn fx:id="colMisc" maxWidth="400.0" prefWidth="75.0" text="Misc" />
-                  <TableColumn fx:id="colTransactionTotal" editable="false" maxWidth="400.0" prefWidth="75.0" text="Total" />
+                  <TableColumn fx:id="colTotal" editable="false" maxWidth="400.0" prefWidth="75.0" text="Total" />
               </columns>
             </TableView>
          </children>
