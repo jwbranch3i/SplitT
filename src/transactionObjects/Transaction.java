@@ -54,21 +54,9 @@ public class Transaction
 	}
 
 	// ----------------------------------------
-	public double getDoubleGas()
+	public double getGas()
 	{
 		return gas.get();
-	}
-
-	public String getGas()
-	{
-		if (gas.get() == 0.)
-		{
-			return "";
-		}
-		else
-		{
-			return String.format("%.2f", gas.get());
-		}
 	}
 
 	public void setGas(double gas)
@@ -78,21 +66,9 @@ public class Transaction
 	}
 
 	// ----------------------------------------
-	public double getDoubleService()
+	public double getService()
 	{
 		return service.get();
-	}
-
-	public String getService()
-	{
-		if (service.get() == 0.)
-		{
-			return "";
-		}
-		else
-		{
-			return String.format("%.2f", service.get());
-		}
 	}
 
 	public void setService(double service)
@@ -102,21 +78,9 @@ public class Transaction
 	}
 
 	// ----------------------------------------
-	public double getDoubleJohn()
+	public double getJohn()
 	{
 		return john.get();
-	}
-
-	public String getJohn()
-	{
-		if (john.get() == 0.)
-		{
-			return "";
-		}
-		else
-		{
-			return String.format("%.2f", john.get());
-		}
 	}
 
 	public void setJohn(double john)
@@ -127,21 +91,9 @@ public class Transaction
 
 
 	// ----------------------------------------
-	public double getDoubleMedical()
+	public double getMedical()
 	{
 		return medical.get();
-	}
-
-	public String getMedical()
-	{
-		if (medical.get() == 0.)
-		{
-			return "";
-		}
-		else
-		{
-			return String.format("%.2f", medical.get());
-		}
 	}
 
 	public void setMedical(double med)
@@ -151,21 +103,9 @@ public class Transaction
 	}
 
 	// ----------------------------------------
-	public double getDoubleMisc()
+	public double getMisc()
 	{
 		return misc.get();
-	}
-
-	public String getMisc()
-	{
-		if (misc.get() == 0.)
-		{
-			return "";
-		}
-		else
-		{
-			return String.format("%.2f", misc.get());
-		}
 	}
 	
 	public void setMisc(double misc)
@@ -175,46 +115,29 @@ public class Transaction
 	}
 
 	// ----------------------------------------
-	public double getDoubleTotal()
+	public double getTotal()
 	{
 		return total.get();
 	}
-
-	public String getTotal()
-	{
-		if (total.get() == 0.)
-		{
-			return "";
-		}
-		else
-		{
-			return String.format("%.2f", total.get());
-		}
-	}
 	
-	protected void setTotal(double total)
-	{
-		this.total.set(total);
-	}
-
 	
 
 	// ----------------------------------------
 	protected void updateTotal()
 	{
-		setTotal(getDoubleGas() + getDoubleService() + getDoubleJohn() +
-				getDoubleMedical() + getDoubleMisc());		
+		total.set(getGas() + getService() + getJohn() +
+				getMedical() + getMisc());		
 	}
 
 	@Override
 	public String toString()
 	{
-		return "Transaction [gas= " + getDoubleGas()
-		                    + " service= " + getDoubleService()
-		                    + " john= " + getDoubleJohn()
-		                    + " medical= " + getDoubleMedical()
-		                    + " misc= " + getDoubleMisc()
-		                    + " total= " + getDoubleTotal() +"]";
+		return "Transaction [gas= " + getGas()
+		                    + " service= " + getService()
+		                    + " john= " + getJohn()
+		                    + " medical= " + getMedical()
+		                    + " misc= " + getMisc()
+		                    + " total= " + getTotal() +"]";
 	}
 
 	

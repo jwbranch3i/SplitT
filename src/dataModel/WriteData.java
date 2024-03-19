@@ -48,7 +48,7 @@ public class WriteData
 				case DB.COL_TRANSACTIONS_GAS:
 					update_stmt = DB.sql_stmt_UPDATEFIELD_pt1 + cField + DB.sql_stmt_UPDATEFIELD_pt2;
 					ps_updateRecord = DataSource.getConn().prepareStatement(update_stmt);
-					ps_updateRecord.setString(1, transaction.getGas());
+					ps_updateRecord.setDouble(1, transaction.getGas());
 					ps_updateRecord.setInt(2, transaction.get_id());
 					
 					ps_updateRecord.executeUpdate();
@@ -61,7 +61,7 @@ public class WriteData
 				case DB.COL_TRANSACTIONS_SERVICE:
 					update_stmt = DB.sql_stmt_UPDATEFIELD_pt1 + cField + DB.sql_stmt_UPDATEFIELD_pt2;
 					ps_updateRecord = DataSource.getConn().prepareStatement(update_stmt);
-					ps_updateRecord.setString(1, transaction.getService());
+					ps_updateRecord.setDouble(1, transaction.getService());
 					ps_updateRecord.setInt(2, transaction.get_id());
 					
 					ps_updateRecord.executeUpdate();
@@ -75,7 +75,7 @@ public class WriteData
 				case DB.COL_TRANSACTIONS_JOHN:
 					update_stmt = DB.sql_stmt_UPDATEFIELD_pt1 + cField + DB.sql_stmt_UPDATEFIELD_pt2;
 					ps_updateRecord = DataSource.getConn().prepareStatement(update_stmt);
-					ps_updateRecord.setString(1, transaction.getJohn());
+					ps_updateRecord.setDouble(1, transaction.getJohn());
 					ps_updateRecord.setInt(2, transaction.get_id());
 					
 					ps_updateRecord.executeUpdate();
@@ -89,7 +89,7 @@ public class WriteData
 				case DB.COL_TRANSACTIONS_MEDICAL:
 					update_stmt = DB.sql_stmt_UPDATEFIELD_pt1 + cField + DB.sql_stmt_UPDATEFIELD_pt2;
 					ps_updateRecord = DataSource.getConn().prepareStatement(update_stmt);
-					ps_updateRecord.setString(1, transaction.getMedical());
+					ps_updateRecord.setDouble(1, transaction.getMedical());
 					ps_updateRecord.setInt(2, transaction.get_id());
 					
 					ps_updateRecord.executeUpdate();
@@ -103,7 +103,7 @@ public class WriteData
 				case DB.COL_TRANSACTIONS_MISC:
 					update_stmt = DB.sql_stmt_UPDATEFIELD_pt1 + cField + DB.sql_stmt_UPDATEFIELD_pt2;
 					ps_updateRecord = DataSource.getConn().prepareStatement(update_stmt);
-					ps_updateRecord.setString(1, transaction.getMisc());
+					ps_updateRecord.setDouble(1, transaction.getMisc());
 					ps_updateRecord.setInt(2, transaction.get_id());
 					
 					ps_updateRecord.executeUpdate();
