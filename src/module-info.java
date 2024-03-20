@@ -5,6 +5,6 @@ module splitT {
 	requires javafx.base;
 	requires javafx.graphics;
 	
-	opens application to javafx.base, javafx.graphics, javafx.fxml;
+	opens application to javafx.base, javafx.graphics, javafx.fxml, javafx.stage;
 	opens transactionObjects to javafx.base;
 }

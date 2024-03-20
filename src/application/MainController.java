@@ -100,6 +100,7 @@ public class MainController
 		colMisc.setStyle("-fx-alignment: CENTER-RIGHT");
 
 		colTotal.setCellValueFactory(new PropertyValueFactory<Transaction, Double>("total"));
+		colTotal.setStyle("-fx-alignment: CENTER-RIGHT");
 	}
 
 	/************************************************/
