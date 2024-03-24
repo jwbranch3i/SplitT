@@ -1,0 +1,63 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+
+
+
+.table-view{
+  -fx-background-color: transparent;
+  -fx-border-color: black;
+}
+
+/* top right corner of the header section above the scroll bars */
+.table-view .column-header-background .filler {
+  -fx-background-color: transparent;
+}
+
+/* bottom right corner between the scrollbars */
+.table-view .corner {
+  -fx-background-color: transparent;
+}
+
+/* Global header background 
+This will allow us to create a coloured background,
+with rounded corners at the top left and top right.
+We will inset the background by the width of the scrollbar, 
+so that the right edge of the header is flush with the table. 
+Finally, we’ll use some padding to make the bottom headers a 
+little further from the table contents.  */
+
+.table-view .column-header-background{
+  -fx-background-color: linear-gradient(to bottom, #ddaa1da4, #93f9b944);*/
+  //-fx-background-color: red;
+  -fx-background-radius: 7px 7px 0px 0px;
+  -fx-background-insets: 0 11px 0 0;
+  -fx-padding: 0 0 5px 0;
+}
+
+/* individual column headers */
+.table-view .column-header {
+  -fx-background-color: transparent;
+}
+
+/* cells and rows */
+.table-view .table-cell{
+  -fx-border-color: transparent;
+  -fx-padding: 2 0 2 10px;
+}
+
+
+.table-row-cell: hover {
+  -fx-background-color: #93f9b911;
+  -fx-text-background-color: red;
+}
+.table-row-cell: odd{
+  -fx-background-color: yellow;
+  -fx-background-insets: 0, 0 0 1 0;
+  -fx-padding: 0.0em;
+}
+.table-row-cell: even{
+  -fx-background-color: lightblue;
+  -fx-background-insets: 0, 0 0 1 0;
+  -fx-padding: 0.0em;
+}
+

@@ -16,11 +16,14 @@ public class SplitT extends Application
 		try
 		{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
-			Parent root = loader.load();
+			Parent root;
+
+			root = loader.load();
+
 			MainController controller = loader.getController();
 			controller.getTransactions();
 
-			Scene scene = new Scene(root, 900, 800);
+			Scene scene = new Scene(root, 812, 632);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
